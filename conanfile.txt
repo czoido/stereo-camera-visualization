@@ -1,0 +1,8 @@
+[requires]
+opencv/4.0.0@conan/stable
+glfw/3.2.1@bincrafters/stable
+glm/0.9.9.1@g-truc/stable
+glew/2.1.0@bincrafters/stable
+
+[generators]
+xcode
