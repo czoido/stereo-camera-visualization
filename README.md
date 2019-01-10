@@ -15,3 +15,5 @@ All dependencies are managed with [conan](https://github.com/conan-io/conan), th
 The output depending on the parameters, the type of algorithm and the initial calibration of the camera should be something like this:
 
 ![Point Cloud](https://raw.githubusercontent.com/czoido/stereo-camera-visualization/master/media/output-example.png)
+
+![Point Cloud](https://raw.githubusercontent.com/czoido/stereo-camera-visualization/master/media/output-example-2.png)
