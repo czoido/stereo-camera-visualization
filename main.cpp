@@ -10,10 +10,8 @@
 
 int main( int argc, const char** argv )
 {
-    int deviceid = 1;
+    const int deviceid = 1;
     cv::VideoCapture capture;
-
-    cv::namedWindow( "capture", cv::WINDOW_AUTOSIZE );
 
     if (!capture.isOpened())
         capture.open(deviceid);
@@ -22,7 +20,6 @@ int main( int argc, const char** argv )
         std::cerr << "Failed to open the video device, video file or image sequence!\n" << std::endl;
         return 1;
     }
-
 
     OpenGLViewer viewer;
     StereoPairProcessor stereo_processor("intrinsics.yml","extrinsics.yml");
