@@ -9,7 +9,7 @@ All dependencies are managed with [conan](https://github.com/conan-io/conan), th
 
 **A frame from the music video:**
 
-<img src="http://img.youtube.com/vi/8nTFjVm9sTQ/2.jpg" height="480">
+<img src="http://img.youtube.com/vi/8nTFjVm9sTQ/2.jpg" width="480">
 
 **Output from program:**
 
