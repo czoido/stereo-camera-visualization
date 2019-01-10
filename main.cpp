@@ -40,6 +40,6 @@ int main( int argc, const char** argv )
         key = (char)cv::waitKey(11);
     }
     viewer.terminate();
-    return 1;
+    return 0;
 }
 
