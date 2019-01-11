@@ -152,7 +152,7 @@ void OpenGLViewer::ProcessInput()
         camera_->ProcessKeyboard(Camera_Movement::DOWN, delta_time_);
 }
 
-int OpenGLViewer::RenderFrame(cv::Mat camera_image, cv::Mat point_cloud) {
+int OpenGLViewer::RenderFrame(cv::Mat camera_image,cv::Mat point_cloud) {
     
     if (glfwGetKey(window_, GLFW_KEY_ESCAPE ) != GLFW_PRESS)
     {
@@ -164,15 +164,15 @@ int OpenGLViewer::RenderFrame(cv::Mat camera_image, cv::Mat point_cloud) {
         std::vector<cv::Vec3f> xyz_color_points;
         for (int i = 0; i < point_cloud.rows; i++)
         {
-            cv::Vec3f *pLig = (cv::Vec3f*)(point_cloud.ptr(i));
+            cv::Vec3f* pLig = (cv::Vec3f*)(point_cloud.ptr(i));
             for (int j = 0; j < point_cloud.cols ; j++, pLig++)
             {
-                if (pLig[0][2] < 10000 )
+                //if (pLig[0][2] < 10000 )
                 {
                     cv::Vec3f p1(pLig[0][0], -pLig[0][1], -pLig[0][2]);
-                    const double max_z = 5;
+                    const double max_z = 3;
                     const double min_z = 0.1;
-                    if ((fabs(p1[2]) < max_z) && (fabs(p1[2]) > min_z))
+                    //if ((fabs(p1[2]) < max_z) && (fabs(p1[2]) > min_z))
                     {
                         xyz_color_points.push_back(p1);
                         cv::Vec3b color = camera_image.at<cv::Vec3b>(i, j);
@@ -207,14 +207,14 @@ int OpenGLViewer::RenderFrame(cv::Mat camera_image, cv::Mat point_cloud) {
         glBindVertexArray( point_cloud_vao_ );
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = camera_->GetViewMatrix();
-        glm::mat4 projection = glm::perspective(glm::radians(camera_->getZoom()), (float)window_width_ / (float)window_height_, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(camera_->getZoom()), (float)window_width_ / (float)window_height_, 0.1f, 1000.0f);
         point_cloud_shader_.setMat4f("projection", glm::value_ptr(projection));
         point_cloud_shader_.setMat4f("view", glm::value_ptr(view));
         point_cloud_shader_.setMat4f("model", glm::value_ptr(model));
         
         glBindBuffer(GL_ARRAY_BUFFER, point_cloud_vbo_);
         glBufferData(GL_ARRAY_BUFFER, xyz_color_points.size()*sizeof(cv::Vec3f), &xyz_color_points.front(), GL_STREAM_DRAW);
-        glPointSize(2.0);
+        glPointSize(3.5);
         glDrawArrays(GL_POINTS, 0, xyz_color_points.size()/2);
         glBindVertexArray( 0 );
         glDisable(GL_BLEND);
