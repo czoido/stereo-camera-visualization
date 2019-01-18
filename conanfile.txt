@@ -6,3 +6,4 @@ glew/2.1.0@bincrafters/stable
 
 [generators]
 xcode
+cmake
