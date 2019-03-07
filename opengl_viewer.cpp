@@ -9,7 +9,8 @@
 
 
 
-OpenGLViewer::OpenGLViewer(void):window_width_(800),
+OpenGLViewer::OpenGLViewer(void):cam_render_texture_(-1),
+                                 window_width_(800),
                                  window_height_(600),
                                  first_mouse_(true),
                                  last_x_(window_width_/2.0),
@@ -190,7 +191,8 @@ int OpenGLViewer::RenderFrame(cv::Mat camera_image,cv::Mat point_cloud) {
             int nrChannels = camera_image.channels();
             int width = camera_image.cols;
             int height = camera_image.rows;
-            glGenTextures(1, &cam_render_texture_);
+            if (cam_render_texture_==-1)
+                glGenTextures(1, &cam_render_texture_);
             glBindTexture(GL_TEXTURE_2D, cam_render_texture_);
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
