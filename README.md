@@ -25,5 +25,17 @@ The output depending on the parameters, the type of algorithm and the initial ca
 1. Clone this repo: `git clone https://github.com/czoido/stereo-camera-visualization.git`
 2. [Install conan](https://docs.conan.io/en/latest/installation.html)
 3. Open the terminal, cd to the cloned directory and  `mkdir build`
-4.  `cd build` and  `conan install ..`
-5. Open the Xcode generated project and build it.
+4. `cd build` and  `conan install ..`
+
+Windows:
+```
+$ cmake .. -G "Visual Studio 16"
+$ cmake --build . --config Release
+```
+Linux or Mac:
+```
+$ cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
+$ cmake --build .
+```
+You will probably have to change the id of your camera, it's harcoded in the sources as `deviceid` in main.cpp.
+Also, make sure that shaders (vs, fs), config files (yml) and also plist (Mac) are in the working directory.
