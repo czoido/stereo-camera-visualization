@@ -20,7 +20,7 @@ The output depending on the parameters, the type of algorithm and the initial ca
 
 ![Point Cloud](https://raw.githubusercontent.com/czoido/stereo-camera-visualization/master/media/output-example-2.png)
 
-## How to Use In macOS with Xcode
+## Building
 
 1. Clone this repo: `git clone https://github.com/czoido/stereo-camera-visualization.git`
 2. [Install conan](https://docs.conan.io/en/latest/installation.html)
